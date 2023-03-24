@@ -9,4 +9,4 @@ GITHUB_REPO = 'discord-source'
 GITHUB_TOKEN = ''
 
 [build]
-command = "pnpm install --frozen-lockfile && pnpm run tauri:build"
+command = "npm install && npm run build"
