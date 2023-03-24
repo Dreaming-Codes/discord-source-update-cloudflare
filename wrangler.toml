@@ -4,9 +4,9 @@ compatibility_date = "2022-03-26"
 main = "src/index.ts"
 
 [vars]
-GITHUB_ACCOUNT = 'killeencode'
-GITHUB_REPO = 'brancato'
-GITHUB_TOKEN = '' # Optional - used with private repos
+GITHUB_ACCOUNT = 'Dreaming-Codes'
+GITHUB_REPO = 'discord-source'
+GITHUB_TOKEN = ''
 
 [build]
-command = "npm install && npm run build"
+command = "pnpm install --frozen-lockfile && pnpm run tauri:build"
