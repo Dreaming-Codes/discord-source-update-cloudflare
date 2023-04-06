@@ -100,7 +100,8 @@ const getLatestAssets = async (request: Request) => {
   if (!downloadPath) { throw new Error('Could not get file path from download URL') }
 
   const headers = new Headers({
-    'Accept': 'application/octet-stream'
+    'Accept': 'application/octet-stream',
+    'User-Agent': request.headers.get('User-Agent') as string,
   })
 
   if (GITHUB_TOKEN?.length) headers.set('Authorization', `token ${GITHUB_TOKEN}`)
