@@ -1,4 +1,4 @@
-export type Asset = { name: string; url: string }
+export type Asset = { name: string; url: string; downloadURL: string }
 export const getReleases = async (request: Request): Promise<Response> => {
   const reqUrl = new URL(
     `https://api.github.com/repos/${GITHUB_ACCOUNT}/${GITHUB_REPO}/releases/latest`,
