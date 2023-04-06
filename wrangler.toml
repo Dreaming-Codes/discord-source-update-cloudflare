@@ -6,7 +6,6 @@ main = "src/index.ts"
 [vars]
 GITHUB_ACCOUNT = 'Dreaming-Codes'
 GITHUB_REPO = 'discord-source'
-# Set GITHUB_TOKEN with wrangler secret put GITHUB_TOKEN "token"
 
 [build]
 command = "npm install && npm run build"
