@@ -2,7 +2,6 @@ import { testAsset } from './getPlatform'
 import semverValid from 'semver/functions/valid'
 import semverGt from 'semver/functions/gt'
 import { AVAILABLE_ARCHITECTURES, AVAILABLE_PLATFORMS } from './constants'
-import { handleLegacyRequest } from './legacy/handler'
 import { findAssetSignature, getLatestRelease } from './services/github'
 import { TauriUpdateResponse } from './types'
 import { sanitizeVersion } from './utils/versioning'
@@ -135,5 +134,5 @@ export async function handleRequest(request: Request): Promise<Response> {
     }
   }
 
-  return handleLegacyRequest(request)
+  throw new Error('Legacy endpoint no longer supported')
 }
