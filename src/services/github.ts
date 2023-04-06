@@ -32,6 +32,7 @@ export const getLatestRelease = async (request: Request): Promise<Release> => {
 export async function findAssetSignature(
   fileName: string,
   assets: Asset[],
+  request: Request
 ): Promise<string | undefined> {
   // check in our assets if we have a file: `fileName.sig`
   // by example fileName can be: App-1.0.0.zip
@@ -45,7 +46,8 @@ export async function findAssetSignature(
   }
 
   const headers = new Headers({
-    'Accept': 'application/octet-stream'
+    'Accept': 'application/octet-stream',
+    'User-Agent': request.headers.get('User-Agent') as string
   })
 
   if (GITHUB_TOKEN?.length) headers.set('Authorization', `token ${GITHUB_TOKEN}`)
