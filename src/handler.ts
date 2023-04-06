@@ -100,9 +100,14 @@ const getLatestAssets = async (request: Request) => {
 
   if (!downloadPath) { throw new Error('Could not get file path from download URL') }
 
+  const headers = new Headers()
+
+  if (GITHUB_TOKEN?.length) headers.set('Authorization', `token ${GITHUB_TOKEN}`)
+  
   const { readable, writable } = new TransformStream();
   const file_response = await fetch(downloadPath, {
     method: 'GET',
+    headers,
     redirect: 'follow'
   })
 
