@@ -96,11 +96,13 @@ const getLatestAssets = async (request: Request) => {
   if (!fileName) { throw new Error('Could not get file name from download URL') }
 
   const release = await getLatestRelease(request)
-  const downloadPath = release.assets.find(({ name }) => name === fileName)?.browser_download_url
+  const downloadPath = release.assets.find(({ name }) => name === fileName)?.url
 
   if (!downloadPath) { throw new Error('Could not get file path from download URL') }
 
-  const headers = new Headers()
+  const headers = new Headers({
+    'Accept': 'application/octet-stream'
+  })
 
   if (GITHUB_TOKEN?.length) headers.set('Authorization', `token ${GITHUB_TOKEN}`)
   
