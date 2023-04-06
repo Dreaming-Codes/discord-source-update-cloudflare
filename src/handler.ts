@@ -64,7 +64,7 @@ const handleV1Request = async (request: Request) => {
     return responses.NotFound()
   }
 
-  const signature = await findAssetSignature(match.name, release.assets)
+  const signature = await findAssetSignature(match.name, release.assets, request)
   const proxy = GITHUB_TOKEN?.length;
   const downloadURL = proxy ? createProxiedFileUrl(match.browser_download_url, request) : match.browser_download_url
   const data: TauriUpdateResponse = {
