@@ -44,11 +44,13 @@ export async function findAssetSignature(
     return undefined
   }
 
-  const headers = new Headers()
+  const headers = new Headers({
+    'Accept': 'application/octet-stream'
+  })
 
   if (GITHUB_TOKEN?.length) headers.set('Authorization', `token ${GITHUB_TOKEN}`)
   
-  const response = await fetch(foundSignature.browser_download_url, {headers})
+  const response = await fetch(foundSignature.url, {headers})
   if (response.status !== 200) {
     return undefined
   }
